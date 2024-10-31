@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
             return const MainPage();
           });
     },
-    'mainPage': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
+    '/main': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
       return MaterialPageRoute(
           settings: settings,
           builder: (_) {
@@ -47,13 +47,31 @@ class _MyAppState extends State<MyApp> {
             return const MainPage();
           });
     },
-    'simplePage': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
+    '/product': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
       return MaterialPageRoute(
           settings: settings,
           builder: (_) {
             Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
 
-            return const SimplePage();
+            return const ProductPage();
+          });
+    },
+    '/profile': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (_) {
+            Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
+
+            return const ProfilePage();
+          });
+    },
+    '/market': (RouteSettings settings, bool isContainerPage, String? uniqueId) {
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (_) {
+            Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
+
+            return const MarketPage();
           });
     },
   };
@@ -90,17 +108,37 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text('Main Page')),
+      body: Center(child: Text('Flutter Main Page')),
     );
   }
 }
 
-class SimplePage extends StatelessWidget {
-  const SimplePage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:  Center(child: Text('SimplePage')),
+      body:  Center(child: Text('Flutter Profile Page')),
+    );
+  }
+}
+
+class ProductPage extends StatelessWidget {
+  const ProductPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body:  Center(child: Text('Flutter Product Page')),
+    );
+  }
+}
+
+class MarketPage extends StatelessWidget {
+  const MarketPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body:  Center(child: Text('Flutter Market Page')),
     );
   }
 }
