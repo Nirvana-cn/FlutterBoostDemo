@@ -77,7 +77,9 @@ class _MyAppState extends State<MyApp> {
   };
 
   Route<dynamic>? routeFactory(RouteSettings settings, bool isContainerPage, String? uniqueId) {
-    FlutterBoostRouteFactory func = routerMap[settings.name] as FlutterBoostRouteFactory;
+    FlutterBoostRouteFactory? func = routerMap[settings.name];
+    if (func == null) return null;
+
     return func(settings, isContainerPage, uniqueId);
   }
 
@@ -127,8 +129,26 @@ class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:  Center(child: Text('Flutter Product Page')),
+    return Scaffold(
+      body:  Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Flutter Product Page'),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              child: const Text('Open Detail Page'),
+              onPressed: () {
+                BoostNavigator.instance.push(
+                  "/detail",
+                  withContainer: false,
+                  arguments: {},
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
